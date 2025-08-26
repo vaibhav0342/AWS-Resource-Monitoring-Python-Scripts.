@@ -45,6 +45,7 @@ No external Python dependencies are required (json, subprocess, csv are built-in
 ▶️ Usage
 Clone this repo or copy the script
 git clone https://github.com/vaibhav0342/AWS-Resource-Monitoring-Python-Scripts..git
+
 cd AWS-Resource-Monitoring-Python-Scripts
 
 Run the script:
