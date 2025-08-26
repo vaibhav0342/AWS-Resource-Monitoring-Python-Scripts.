@@ -1,0 +1,66 @@
+# AWS ECR Vulnerability Scanner
+
+This Python script scans all images stored in **AWS Elastic Container Registry (ECR)** for vulnerabilities using the AWS CLI.  
+It collects **CRITICAL severity vulnerabilities** and saves them into a CSV report (`repo_with_CRITICAL_issues.csv`).
+
+---
+
+## 🚀 Features
+- Lists all repositories in ECR
+- Fetches the **latest image digest** per repository
+- Starts an **ECR vulnerability scan**
+- Waits until scan completes
+- Extracts all **CRITICAL vulnerabilities**
+- Saves results to a CSV file for reporting
+
+---
+
+## 🛠 Prerequisites
+
+1. **Python 3.8+**
+   python3 --version
+
+
+AWS CLI installed and configured
+pip install awscli
+aws configure
+
+
+Ensure your IAM user/role has these permissions:
+
+ecr:DescribeRepositories
+
+ecr:DescribeImages
+
+ecr:StartImageScan
+
+ecr:DescribeImageScanFindings
+
+ecr:GetAuthorizationToken
+
+ecr:BatchGetImage
+
+No external Python dependencies are required (json, subprocess, csv are built-in).
+
+▶️ Usage
+Clone this repo or copy the script
+git clone https://github.com/your-username/ecr-vulnerability-scanner.git
+cd ecr-vulnerability-scanner
+
+Run the script:
+python3 scan_ecr.py
+
+After execution, results will be available in:
+repo_with_CRITICAL_issues.csv
+
+Example output:
+Repo	package_name	version	uri
+backend-api	openssl	1.0.2k	https://.../CVE-2021-12345
+worker-service	glibc	2.17	https://.../CVE-2020-56789
+
+⚠️ Notes
+If a repo has no images, it will be skipped.
+
+If the scan fails, the repo will be skipped with a warning.
+
+Currently, only CRITICAL issues are saved to the CSV.
