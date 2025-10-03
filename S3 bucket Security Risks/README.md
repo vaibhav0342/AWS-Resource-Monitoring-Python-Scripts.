@@ -22,7 +22,9 @@ python3 --version
 
 boto3 library installed
 Install via pip:
-
+apt install python3.12-venv
+python3 -m venv ~/checkov-venv
+source ~/checkov-venv/bin/activate
 pip install boto3
 
 
